@@ -1,4 +1,4 @@
-package com.Automation.UnifiedFramework;
+package com.Automation.DriverScript;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,14 +26,14 @@ public class DriverClass {
 	public static AppiumDriver<MobileElement> mydriver;
 	public static AppiumDriverLocalService service;
 	public static DriverClass D;
-	public static PropertyReader reader = new PropertyReader();
+	public PropertyReader reader = new PropertyReader();
 	
 	
 	public void initialSetup(String Element) throws MalformedURLException, FileNotFoundException{
 		service = AppiumDriverLocalService.buildService(
-				new AppiumServiceBuilder().usingDriverExecutable(new File("C:/Program Files/nodejs/node.exe"))
-						.withAppiumJS(new File("C:/Program Files/Appium/node_modules/appium/bin/appium.js"))
-						.withLogFile(new File("C:/Users/pawan/Downloads/Appium docs/logs.txt")));
+				new AppiumServiceBuilder().usingDriverExecutable(new File(reader.propertyReader("AppiumDriverExe")))
+						.withAppiumJS(new File(reader.propertyReader("AppiumJS")))
+						.withLogFile(new File(reader.propertyReader("AppiumLogFile"))));
 		service.start();
 		DesiredCapabilities cap = new DesiredCapabilities();
 
@@ -53,8 +53,9 @@ public class DriverClass {
 
 	}
 	public DriverClass() throws MalformedURLException, FileNotFoundException {
-
+		if(mydriver==null){
 		initialSetup("MobileApp");
+		}
 	}
 
 
