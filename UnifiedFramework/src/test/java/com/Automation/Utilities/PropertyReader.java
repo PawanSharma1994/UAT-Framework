@@ -7,22 +7,18 @@ import java.util.Properties;
 
 public class PropertyReader {
 	
-	public static String AppType;
-	
-	
 	
 	public String propertyReader(String property) throws FileNotFoundException{
-		
+		String value="";
 		try{
-			
 			Properties prop = new Properties();
-			FileInputStream f = new FileInputStream(System.getProperty("user.dir\\")+"Testproperties.properties");
+			FileInputStream f = new FileInputStream("Testproperty.properties");
 			prop.load(f);
-			prop.getProperty(property);
+			value =	prop.getProperty(property);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		 return property;
+		 return value;
 	}
 	
 	 

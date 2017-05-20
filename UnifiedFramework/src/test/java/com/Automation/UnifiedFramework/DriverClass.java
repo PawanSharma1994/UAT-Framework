@@ -41,13 +41,13 @@ public class DriverClass {
 			cap.setCapability("deviceName", "ca25ba1");
 			cap.setCapability("appPackage", "in.amazon.mShop.android.shopping");
 			cap.setCapability("appActivity", "com.amazon.micron.StartupActivity");
-			mydriver = new AndroidDriver<MobileElement>(new URL(reader.propertyReader("URL")), cap);
+			mydriver = new AndroidDriver<MobileElement>(new URL(reader.propertyReader("AppiumPort")), cap);
 		} else if (Element.equalsIgnoreCase("MobileWebBrowser")) {
 
 			cap.setCapability("platformName", "Android");
 			cap.setCapability("deviceName", "ca25ba1");
 			cap.setCapability("browserName", "chrome");
-			mydriver = new AndroidDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+			mydriver = new AndroidDriver<MobileElement>(new URL(reader.propertyReader("AppiumPort")), cap);
 			mydriver.manage().timeouts().implicitlyWait(5L, TimeUnit.SECONDS);
 		}
 
@@ -57,25 +57,12 @@ public class DriverClass {
 		initialSetup("MobileApp");
 	}
 
-	public static void test() throws MalformedURLException, InterruptedException, FileNotFoundException {
-		ReusableFunctions r = new ReusableFunctions();
-		// r.sendKeys("com.android.dialer:id/search_view","");
-		By searchbox = By.id("in.amazon.mShop.android.shopping:id/search_bar_plate");
-		By autotext1 = By.id("in.amazon.mShop.android.shopping:id/search_auto_text");
-		Thread.sleep(5000);
-		 r.clickElement(searchbox);
-		 r.sendKeys(autotext1,"Shoes");
-		 Thread.sleep(3000);
-		 ((AndroidDeviceActionShortcuts) mydriver).pressKeyCode(AndroidKeyCode.KEYCODE_SEARCH);
-	}
 
 	public static void main(String[] args) throws MalformedURLException {
 		try {
 
 			new DriverClass();
-
-			test();
-
+			
 		} catch (Exception e) {
 			System.out.println("Exception!!" + e);
 		} finally {
