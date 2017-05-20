@@ -11,22 +11,20 @@ public class PropertyReader {
 	
 	
 	
-	public void propertyReader() throws FileNotFoundException{
+	public String propertyReader(String property) throws FileNotFoundException{
 		
 		try{
 			
 			Properties prop = new Properties();
-			FileInputStream f = new FileInputStream(System.getProperty("user.dir")+"");
+			FileInputStream f = new FileInputStream(System.getProperty("user.dir\\")+"Testproperties.properties");
 			prop.load(f);
+			prop.getProperty(property);
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		
+		 return property;
 	}
 	
-	
-	
-	
-	
+	 
 	
 }
