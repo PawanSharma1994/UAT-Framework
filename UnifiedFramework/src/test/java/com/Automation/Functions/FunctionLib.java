@@ -9,7 +9,7 @@ import com.Automation.DriverScript.DriverClass;
 public class FunctionLib extends DriverClass{
 
 	
-	public FunctionLib() throws MalformedURLException, FileNotFoundException {
+	public FunctionLib() throws Exception {
 		super();
 	}
 	

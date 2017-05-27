@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.SendKeysAction;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import com.Automation.Utilities.ExcelReader;
 import com.Automation.Utilities.PropertyReader;
 
 import io.appium.java_client.AppiumDriver;
@@ -23,13 +24,13 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 
 public class DriverClass {
 
-	public static AppiumDriver<MobileElement> mydriver;
+	public static AppiumDriver<MobileElement> mydriver=null;
 	public static AppiumDriverLocalService service;
 	public static DriverClass D;
 	public PropertyReader reader = new PropertyReader();
+	public  ExcelReader xlReader  = new ExcelReader();
 	
-	
-	public void initialSetup(String Element) throws MalformedURLException, FileNotFoundException{
+	public void initialSetup(String Element) throws Exception{
 		service = AppiumDriverLocalService.buildService(
 				new AppiumServiceBuilder().usingDriverExecutable(new File(reader.propertyReader("AppiumDriverExe")))
 						.withAppiumJS(new File(reader.propertyReader("AppiumJS")))
@@ -52,17 +53,19 @@ public class DriverClass {
 		}
 
 	}
-	public DriverClass() throws MalformedURLException, FileNotFoundException {
+	public DriverClass() throws Exception {
 		if(mydriver==null){
 		initialSetup("MobileApp");
+	//	xlReader.readXL();
 		}
 	}
 
 
-	public static void main(String[] args) throws MalformedURLException {
+	public static void main(String[] args) throws Exception {
 		try {
 
 			new DriverClass();
+			
 			
 		} catch (Exception e) {
 			System.out.println("Exception!!" + e);
