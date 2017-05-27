@@ -37,7 +37,6 @@ public class DriverClass {
 						.withLogFile(new File(reader.propertyReader("AppiumLogFile"))));
 		service.start();
 		DesiredCapabilities cap = new DesiredCapabilities();
-
 		if (Element.equalsIgnoreCase("MobileApp")) {
 			cap.setCapability("deviceName", "ca25ba1");
 			cap.setCapability("appPackage", "in.amazon.mShop.android.shopping");

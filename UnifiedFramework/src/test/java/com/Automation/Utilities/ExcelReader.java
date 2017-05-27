@@ -17,18 +17,16 @@ import java.sql.*;
 
 public class ExcelReader extends PropertyReader{
 
-	private ExcelReader xlReader;
-	public String File_Name = "";
+	private String File_Name = "";
 	final static String Database_URL = "jdbc:odbc:Driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ=%s;DriverID=22;READONLY=false";
 	final static String Driver_Name  = "sun.jdbc.odbc.JdbcOdbcDriver";
-	
 	
 	public ExcelReader() throws FileNotFoundException{
 	  File_Name = super.propertyReader("TestSheetPath");
 	  
 	}
 	
-	public void readXL() throws Exception{
+	public void readXLfromDB() throws Exception{
 		try{
 		File file = new File(File_Name);
 		Class.forName(Driver_Name);

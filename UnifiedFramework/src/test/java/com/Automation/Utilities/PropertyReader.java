@@ -9,7 +9,7 @@ public class PropertyReader{
 	
 	
 	
-	public String propertyReader(String property) throws FileNotFoundException{
+	 synchronized public String propertyReader(String property) throws FileNotFoundException{
 		String value="";
 		try{
 			
