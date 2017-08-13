@@ -24,11 +24,19 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 
 public class DriverClass {
 
+	
 	public static AppiumDriver<MobileElement> mydriver=null;
 	public static AppiumDriverLocalService service;
-	public static DriverClass D;
+	public static DriverClass driverclass;
 	public PropertyReader reader = new PropertyReader();
 	public  ExcelReader xlReader  = new ExcelReader();
+
+	public static synchronized DriverClass get() throws Exception{
+		if(driverclass==null){
+			driverclass = new DriverClass();
+		}
+		return driverclass;
+	}
 	
 	public void initialSetup(String Element) throws Exception{
 		service = AppiumDriverLocalService.buildService(
@@ -55,16 +63,12 @@ public class DriverClass {
 	public DriverClass() throws Exception {
 		if(mydriver==null){
 		initialSetup("MobileApp");
-	//	xlReader.readXL();
 		}
 	}
 
 
 	public static void main(String[] args) throws Exception {
 		try {
-
-			new DriverClass();
-			
 			
 		} catch (Exception e) {
 			System.out.println("Exception!!" + e);

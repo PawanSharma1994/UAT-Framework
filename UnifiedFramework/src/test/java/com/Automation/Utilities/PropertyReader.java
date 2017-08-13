@@ -7,9 +7,15 @@ import java.util.Properties;
 
 public class PropertyReader{
 	
+	public static PropertyReader reader;
 	
-	
-	 synchronized public String propertyReader(String property) throws FileNotFoundException{
+	public static synchronized PropertyReader get(){
+		if(reader==null){
+			reader = new PropertyReader();
+		}
+		return reader;
+	}
+	 public String propertyReader(String property) throws FileNotFoundException{
 		String value="";
 		try{
 			
@@ -22,7 +28,5 @@ public class PropertyReader{
 		}
 		 return value;
 	}
-	
-	 
 	
 }

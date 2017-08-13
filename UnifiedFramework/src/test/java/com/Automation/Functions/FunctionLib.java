@@ -13,7 +13,7 @@ public class FunctionLib extends DriverClass{
 		super();
 	}
 	
-	public void installApp() throws FileNotFoundException{ 
+	public void installApp() throws FileNotFoundException{
 		String ApkFilePath = super.reader.propertyReader("ApkFilePath");
 		super.mydriver.installApp(ApkFilePath);
 	}
